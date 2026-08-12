@@ -6,8 +6,12 @@ import { sites } from "./build/sites-vite-plugin";
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 
 const localBindingConfig = {
+  account_id: "a4f47bbe82fe04890258469abfc78593",
+  name: "frontier-world",
   main: "./worker/index.ts",
+  compatibility_date: "2026-08-12",
   compatibility_flags: ["nodejs_compat"],
+  routes: [{ pattern: "frontierworld.ai", custom_domain: true }],
 };
 
 export default defineConfig(async () => {

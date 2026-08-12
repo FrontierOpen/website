@@ -11,7 +11,7 @@
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run build",
-    "deploy": "npm run build && wrangler deploy --config dist/server/wrangler.json --name frontier-world"
+    "deploy": "npm run build && wrangler deploy --config dist/server/wrangler.json"
   },
   "dependencies": {
     "react": "19.2.6",
