@@ -1,10 +1,11 @@
 const actions = [
   {
     number: "01",
-    name: "Media",
+    name: "Signals",
     title: "看见变化",
-    state: "正在筹备",
+    state: "持续发布",
     copy: "观察、记录与解释 AI 时代正在发生什么。少一点热点转述，多一点能帮助判断和行动的理解。",
+    href: "https://signals.frontierworld.ai/",
   },
   {
     number: "02",
@@ -34,6 +35,7 @@ export default function Home() {
           <a href="#why">为什么</a>
           <a href="#actions">我们在做什么</a>
           <a href="#method">如何工作</a>
+          <a href="https://signals.frontierworld.ai/">Signals</a>
         </nav>
         <a className="nav-cta" href="#actions">进入前沿 <span aria-hidden="true">↘</span></a>
       </header>
@@ -93,6 +95,11 @@ export default function Home() {
           <div className="action-grid">
             {actions.map((action) => (
               <article className="action-card" key={action.name}>
+                {action.href ? (
+                  <a className="card-link" href={action.href} aria-label="阅读 Frontier Signals">
+                    <span className="visually-hidden">阅读 Frontier Signals</span>
+                  </a>
+                ) : null}
                 <div className="card-top">
                   <span className="card-number">{action.number}</span>
                   <span className="card-state">{action.state}</span>
