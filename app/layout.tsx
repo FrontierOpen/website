@@ -23,11 +23,20 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     url: "https://frontierworld.ai",
     siteName: "Frontier World",
+    images: [
+      {
+        url: "/frontier-passage.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Frontier World Passage",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Frontier World | 前沿之境",
     description: "把前沿，变成实践。",
+    images: ["/frontier-passage.jpg"],
   },
 };
 

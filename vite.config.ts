@@ -9,7 +9,7 @@ const localBindingConfig = {
   account_id: "a4f47bbe82fe04890258469abfc78593",
   name: "frontier-world",
   main: "./worker/index.ts",
-  compatibility_date: "2026-08-12",
+  compatibility_date: "2026-05-15",
   compatibility_flags: ["nodejs_compat"],
   routes: [{ pattern: "frontierworld.ai", custom_domain: true }],
 };
@@ -25,9 +25,11 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
-    server: isCodexSeatbeltSandbox
-      ? { watch: { useFsEvents: false, usePolling: true } }
-      : undefined,
+    server: {
+      port: 5173,
+      host: "127.0.0.1",
+      watch: isCodexSeatbeltSandbox ? { useFsEvents: false, usePolling: true } : undefined,
+    },
     plugins: [
       vinext(),
       sites(),
