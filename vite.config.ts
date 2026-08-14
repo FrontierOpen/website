@@ -11,6 +11,7 @@ const localBindingConfig = {
   main: "./worker/index.ts",
   compatibility_date: "2026-05-15",
   compatibility_flags: ["nodejs_compat"],
+  preview_urls: true,
   routes: [{ pattern: "frontierworld.ai", custom_domain: true }],
 };
 
