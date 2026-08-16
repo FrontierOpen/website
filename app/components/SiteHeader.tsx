@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDownRight, ArrowUpRight, Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -17,22 +17,44 @@ const navLinks = [
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    const desktopQuery = window.matchMedia("(min-width: 768px)");
+    const handleDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) setMobileMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    desktopQuery.addEventListener("change", handleDesktop);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      desktopQuery.removeEventListener("change", handleDesktop);
+    };
+  }, [mobileMenuOpen]);
 
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
     <header
       className={
-        "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 " +
-        (scrolled
-          ? "nav-material border-white/10"
-          : "border-transparent bg-transparent")
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-200 " +
+        (scrolled || mobileMenuOpen ? "nav-material" : "bg-transparent")
       }
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
@@ -83,6 +105,7 @@ export default function SiteHeader() {
             <ArrowDownRight className="h-3.5 w-3.5" />
           </a>
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/14 bg-white/[0.06] text-white transition-[background,transform] duration-200 hover:bg-white/[0.11] active:scale-[0.94] md:hidden"
@@ -95,40 +118,39 @@ export default function SiteHeader() {
         </div>
       </div>
 
-      {mobileMenuOpen ? (
-        <div
-          id="mobile-navigation"
-          className="mobile-sheet nav-material mx-4 mb-4 rounded-lg border border-white/14 p-3 md:hidden"
-        >
-          <nav className="grid" aria-label="移动端主导航">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                onClick={closeMenu}
-                className="flex min-h-12 items-center justify-between rounded-md px-3 text-sm text-white/72 transition-colors hover:bg-white/[0.07] hover:text-white"
-              >
-                <span>{link.label}</span>
-                {link.external ? (
-                  <ArrowUpRight className="h-4 w-4" />
-                ) : (
-                  <ArrowDownRight className="h-4 w-4 opacity-45" />
-                )}
-              </a>
-            ))}
+      <div
+        id="mobile-navigation"
+        hidden={!mobileMenuOpen}
+        className="mobile-sheet nav-material mx-4 mb-4 rounded-lg border border-white/14 p-3 md:hidden"
+      >
+        <nav className="grid" aria-label="移动端主导航">
+          {navLinks.map((link) => (
             <a
-              href="#contact"
+              key={link.label}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
               onClick={closeMenu}
-              className="mt-2 flex min-h-12 items-center justify-between rounded-md bg-white px-3 text-sm font-semibold text-black active:scale-[0.98]"
+              className="flex min-h-12 items-center justify-between rounded-md px-3 text-sm text-white/72 transition-colors hover:bg-white/[0.07] hover:text-white"
             >
-              <span>带着问题来</span>
-              <ArrowDownRight className="h-4 w-4" />
+              <span>{link.label}</span>
+              {link.external ? (
+                <ArrowUpRight className="h-4 w-4" />
+              ) : (
+                <ArrowDownRight className="h-4 w-4 opacity-45" />
+              )}
             </a>
-          </nav>
-        </div>
-      ) : null}
+          ))}
+          <a
+            href="#contact"
+            onClick={closeMenu}
+            className="mt-2 flex min-h-12 items-center justify-between rounded-md bg-white px-3 text-sm font-semibold text-black active:scale-[0.98]"
+          >
+            <span>带着问题来</span>
+            <ArrowDownRight className="h-4 w-4" />
+          </a>
+        </nav>
+      </div>
     </header>
   );
 }
