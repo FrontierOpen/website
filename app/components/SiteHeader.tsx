@@ -20,7 +20,7 @@ export default function SiteHeader() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 8);
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -60,7 +60,7 @@ export default function SiteHeader() {
         (mobileMenuOpen ? "is-menu-open" : "")
       }
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
+      <div className="site-header-bar flex items-center justify-between">
         <a
           href="#top"
           aria-label="Frontier World 首页"
