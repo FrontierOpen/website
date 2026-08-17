@@ -99,13 +99,13 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <a
             href="#contact"
-            className="hidden items-center gap-2 rounded-lg border border-white/16 bg-white/[0.07] px-3.5 py-2 text-xs font-medium text-white transition-[background,transform,border-color] duration-200 hover:border-white/28 hover:bg-white/[0.12] active:scale-[0.97] sm:inline-flex"
+            className="header-cta group hidden h-10 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium sm:inline-flex"
           >
             <span>发起实践</span>
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-3.5 w-3.5 opacity-60 transition-[opacity,transform] duration-200 group-hover:translate-x-0.5 group-hover:opacity-100" />
           </a>
           <button
             ref={menuButtonRef}
