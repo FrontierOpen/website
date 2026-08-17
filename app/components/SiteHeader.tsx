@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowDownRight, ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "为什么", href: "#why" },
@@ -20,7 +20,7 @@ export default function SiteHeader() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
+    const handleScroll = () => setScrolled(window.scrollY > 8);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -105,7 +105,7 @@ export default function SiteHeader() {
             className="hidden items-center gap-2 rounded-lg border border-white/16 bg-white/[0.07] px-3.5 py-2 text-xs font-medium text-white transition-[background,transform,border-color] duration-200 hover:border-white/28 hover:bg-white/[0.12] active:scale-[0.97] sm:inline-flex"
           >
             <span>发起实践</span>
-            <ArrowDownRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-3.5 w-3.5" />
           </a>
           <button
             ref={menuButtonRef}
@@ -140,7 +140,7 @@ export default function SiteHeader() {
               {link.external ? (
                 <ArrowUpRight className="h-4 w-4" />
               ) : (
-                <ArrowDownRight className="h-4 w-4 opacity-45" />
+                <ArrowRight className="h-4 w-4 opacity-45" />
               )}
             </a>
           ))}
@@ -150,7 +150,7 @@ export default function SiteHeader() {
             className="mt-2 flex min-h-12 items-center justify-between rounded-md bg-white px-3 text-sm font-semibold text-black active:scale-[0.98]"
           >
             <span>带着问题来</span>
-            <ArrowDownRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" />
           </a>
         </nav>
       </div>
