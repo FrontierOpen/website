@@ -76,7 +76,7 @@ export default function SiteHeader() {
           <span className="truncate text-sm font-semibold text-white">
             Frontier World
           </span>
-          <span className="hidden text-xs text-white/50 sm:inline">前沿之境</span>
+          <span className="hidden text-xs text-white/64 sm:inline">前沿之境</span>
         </a>
 
         <nav
@@ -111,7 +111,7 @@ export default function SiteHeader() {
             ref={menuButtonRef}
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/14 bg-white/[0.06] text-white transition-[background,transform] duration-200 hover:bg-white/[0.11] active:scale-[0.94] md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border-0 bg-transparent text-white transition-[background,transform] duration-200 hover:bg-white/[0.1] active:scale-[0.94] md:hidden"
             aria-label={mobileMenuOpen ? "关闭菜单" : "打开菜单"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"

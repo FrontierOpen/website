@@ -99,9 +99,9 @@ button {
   z-index: -1;
   pointer-events: none;
   visibility: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: inherit;
-  background: rgba(30, 32, 38, 0.94);
+  background: rgba(8, 10, 14, 0.94);
   opacity: 0;
   transition: opacity 400ms ease-in-out, visibility 0s 400ms;
 }
@@ -122,7 +122,7 @@ button {
 
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .site-header-bar::before {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(8, 10, 14, 0.78);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
@@ -174,10 +174,14 @@ button {
 
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .mobile-sheet {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(8, 10, 14, 0.86);
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
   }
+}
+
+[aria-controls="mobile-navigation"][aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 @keyframes hero-enter {
