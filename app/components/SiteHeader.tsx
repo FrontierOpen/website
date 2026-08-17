@@ -76,11 +76,11 @@ export default function SiteHeader() {
           <span className="truncate text-sm font-semibold text-white">
             Frontier World
           </span>
-          <span className="hidden text-xs text-white/64 sm:inline">前沿之境</span>
+          <span className="hidden text-xs text-white/84 sm:inline">前沿之境</span>
         </a>
 
         <nav
-          className="hidden items-center gap-7 text-[13px] text-white/64 md:flex"
+          className="hidden items-center gap-7 text-[13px] text-white/84 md:flex"
           aria-label="主导航"
         >
           {navLinks.map((link) => (

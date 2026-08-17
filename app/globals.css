@@ -89,7 +89,9 @@ button {
   transition:
     max-width 400ms cubic-bezier(0.4, 0, 0.2, 1),
     padding-right 400ms cubic-bezier(0.4, 0, 0.2, 1),
-    padding-left 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding-left 400ms cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-backdrop-filter 400ms ease-in-out,
+    backdrop-filter 400ms ease-in-out;
 }
 
 .site-header-bar::before {
@@ -99,7 +101,7 @@ button {
   z-index: -1;
   pointer-events: none;
   visibility: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: inherit;
   background: rgba(8, 10, 14, 0.94);
   opacity: 0;
@@ -121,10 +123,19 @@ button {
 }
 
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header-bar {
+    -webkit-backdrop-filter: blur(0) saturate(100%);
+    backdrop-filter: blur(0) saturate(100%);
+  }
+
   .site-header-bar::before {
-    background: rgba(8, 10, 14, 0.78);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    background: rgba(8, 10, 14, 0.64);
+  }
+
+  [data-site-header].is-scrolled .site-header-bar,
+  [data-site-header].is-menu-open .site-header-bar {
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+    backdrop-filter: blur(18px) saturate(125%);
   }
 }
 
@@ -247,7 +258,13 @@ textarea:focus-visible {
   }
 
   .site-header-bar::before {
+    border-color: rgba(255, 255, 255, 0.18);
     background: #0b0d10;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .site-header-bar {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
@@ -264,8 +281,13 @@ textarea:focus-visible {
   }
 
   .site-header-bar::before {
-    border-color: rgba(255, 255, 255, 0.55);
+    border-color: rgba(255, 255, 255, 0.72);
     background: #050608;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .site-header-bar {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
@@ -284,6 +306,11 @@ textarea:focus-visible {
 
   .site-header-bar::before {
     display: none;
+  }
+
+  .site-header-bar {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
