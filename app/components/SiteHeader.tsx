@@ -52,9 +52,12 @@ export default function SiteHeader() {
 
   return (
     <header
+      data-site-header
+      data-transparent-at-top="true"
       className={
-        "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-200 " +
-        (scrolled || mobileMenuOpen ? "nav-material" : "bg-transparent")
+        "fixed inset-x-0 top-0 z-50 " +
+        (scrolled ? "is-scrolled " : "") +
+        (mobileMenuOpen ? "is-menu-open" : "")
       }
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
@@ -121,7 +124,7 @@ export default function SiteHeader() {
       <div
         id="mobile-navigation"
         hidden={!mobileMenuOpen}
-        className="mobile-sheet nav-material mx-4 mb-4 rounded-lg border border-white/14 p-3 md:hidden"
+        className="mobile-sheet p-3 md:hidden"
       >
         <nav className="grid" aria-label="移动端主导航">
           {navLinks.map((link) => (

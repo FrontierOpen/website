@@ -66,13 +66,62 @@ button {
   -webkit-backdrop-filter: blur(30px) saturate(140%);
 }
 
-.nav-material {
-  background: rgba(5, 6, 8, 0.94);
+[data-site-header] {
+  --glass-visible: 1;
+  isolation: isolate;
+  background: transparent !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+[data-site-header][data-transparent-at-top="true"]:not(.is-scrolled):not(.is-menu-open) {
+  --glass-visible: 0;
+}
+
+[data-site-header]::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  width: 100%;
+  height: 4rem;
+  pointer-events: none;
+  opacity: var(--glass-visible);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.032) 28%, transparent 62%),
+    radial-gradient(75% 145% at 50% -95%, rgba(118, 167, 255, 0.12), transparent 72%),
+    rgba(5, 6, 8, 0.94);
   box-shadow:
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-    0 14px 36px rgba(0, 0, 0, 0.32);
-  backdrop-filter: blur(20px) saturate(120%);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
+    inset 0 1px 0 rgba(255, 255, 255, 0.17),
+    inset 0 -1px 0 rgba(205, 220, 255, 0.1),
+    0 12px 36px rgba(0, 0, 0, 0.28);
+  transition: opacity 180ms var(--ease-fluid);
+}
+
+[data-site-header]::after {
+  content: "";
+  position: absolute;
+  inset: calc(4rem - 1px) 0 auto;
+  z-index: -1;
+  height: 18px;
+  pointer-events: none;
+  opacity: var(--glass-visible);
+  background:
+    linear-gradient(90deg, transparent 4%, rgba(118, 167, 255, 0.08) 30%, rgba(255, 255, 255, 0.1) 52%, rgba(155, 231, 200, 0.05) 73%, transparent 96%) top / 100% 1px no-repeat,
+    linear-gradient(180deg, rgba(5, 6, 8, 0.22), transparent 88%);
+  transition: opacity 180ms var(--ease-fluid);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  [data-site-header]::before {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.032) 28%, transparent 62%),
+      radial-gradient(75% 145% at 50% -95%, rgba(118, 167, 255, 0.12), transparent 72%),
+      rgba(6, 8, 12, 0.78);
+    -webkit-backdrop-filter: blur(30px) saturate(145%) brightness(78%);
+    backdrop-filter: blur(30px) saturate(145%) brightness(78%);
+  }
 }
 
 .hero-copy {
@@ -88,8 +137,34 @@ button {
 }
 
 .mobile-sheet {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 1rem;
+  left: 1rem;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.75rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.025) 34%, transparent 66%),
+    radial-gradient(90% 150% at 18% -72%, rgba(118, 167, 255, 0.14), transparent 68%),
+    rgba(5, 6, 8, 0.95);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.17),
+    inset 0 -1px 0 rgba(205, 220, 255, 0.09),
+    0 20px 56px rgba(0, 0, 0, 0.38);
   animation: sheet-enter 220ms var(--ease-fluid) both;
   transform-origin: top right;
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .mobile-sheet {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.025) 34%, transparent 66%),
+      radial-gradient(90% 150% at 18% -72%, rgba(118, 167, 255, 0.14), transparent 68%),
+      rgba(7, 9, 13, 0.84);
+    -webkit-backdrop-filter: blur(34px) saturate(145%) brightness(78%);
+    backdrop-filter: blur(34px) saturate(145%) brightness(78%);
+  }
 }
 
 @keyframes hero-enter {
@@ -148,18 +223,54 @@ textarea:focus-visible {
 
 @media (prefers-reduced-transparency: reduce) {
   .material-panel,
-  .nav-material {
+  .mobile-sheet,
+  [data-site-header]::before {
     background: #0b0d10;
-    backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  [data-site-header] {
+    --glass-visible: 1;
+  }
+
+  [data-site-header]::after {
+    display: none;
   }
 }
 
 @media (prefers-contrast: more) {
+  [data-site-header] {
+    --glass-visible: 1;
+  }
+
   .material-panel,
-  .nav-material {
+  .mobile-sheet,
+  [data-site-header]::before {
     background: #050608;
-    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.55);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  [data-site-header]::after {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  [data-site-header]::before,
+  [data-site-header]::after {
+    display: none;
+  }
+
+  [data-site-header],
+  .mobile-sheet {
+    background: Canvas !important;
+    border: 1px solid CanvasText;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
