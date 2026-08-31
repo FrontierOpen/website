@@ -12,7 +12,10 @@ const localBindingConfig = {
   compatibility_date: "2026-05-15",
   compatibility_flags: ["nodejs_compat"],
   preview_urls: true,
-  routes: [{ pattern: "frontierworld.ai", custom_domain: true }],
+  routes: [
+    { pattern: "frontierworld.ai", custom_domain: true },
+    { pattern: "www.frontierworld.ai", custom_domain: true },
+  ],
 };
 
 export default defineConfig(async () => {

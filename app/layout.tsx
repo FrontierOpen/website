@@ -1,24 +1,38 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://frontierworld.ai"),
   title: {
-    default: "Frontier World | 前沿之境",
+    default: "AI 内容工作流实践 | Frontier World 前沿之境",
     template: "%s | Frontier World",
   },
-  description: "观察 AI 时代正在发生的变化，共同实践，并把被验证的方法开放出来。",
-  keywords: ["Frontier World", "前沿之境", "AI", "开放实践"],
+  description:
+    "面向独立创作者与 2–10 人小团队，把真实 AI / 科技选题推进成可信、可发布的成果，并留下供下一次复用的工作流。",
+  keywords: [
+    "Frontier World",
+    "前沿之境",
+    "AI 内容工作流",
+    "AI 科技内容",
+    "Frontier Commons",
+  ],
+  authors: [{ name: "Frontier World" }],
+  creator: "Frontier World",
   alternates: {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: {
+      url: "/frontier-mark-favicon.png",
+      type: "image/png",
+      sizes: "360x360",
+    },
+    shortcut: "/frontier-mark-favicon.png",
+    apple: "/frontier-mark-favicon.png",
   },
   openGraph: {
-    title: "Frontier World | 前沿之境",
-    description: "把前沿，变成实践。",
+    title: "把一条 AI 选题做成可信、可发布的成果，并留下工作流",
+    description: "Frontier Commons 创始班适配度申请，面向独立创作者与 2–10 人小团队。",
     type: "website",
     locale: "zh_CN",
     url: "https://frontierworld.ai",
@@ -28,22 +42,68 @@ export const metadata: Metadata = {
         url: "/frontier-passage.jpg",
         width: 1920,
         height: 1080,
-        alt: "Frontier World Passage",
+        alt: "Frontier World 前沿之境的深色空间视觉",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Frontier World | 前沿之境",
-    description: "把前沿，变成实践。",
+    title: "把一条 AI 选题做成可信、可发布的成果，并留下工作流",
+    description: "Frontier Commons 创始班适配度申请。",
     images: ["/frontier-passage.jpg"],
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+};
+
+const themeBootScript = `
+  (() => {
+    let mode = "system";
+    try {
+      const stored = window.localStorage.getItem("frontier-theme:v1");
+      if (stored === "system" || stored === "light" || stored === "dark") {
+        mode = stored;
+      }
+    } catch {}
+    const theme =
+      mode === "system"
+        ? window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark"
+        : mode;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) {
+      themeColor.setAttribute("content", theme === "light" ? "#ffffff" : "#050608");
+    }
+  })();
+`;
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="zh-CN">
-      <body>{children}</body>
+    <html
+      lang="zh-CN"
+      data-theme="dark"
+      data-theme-mode="system"
+      suppressHydrationWarning
+    >
+      <head>
+        <meta name="theme-color" content="#050608" />
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+      </head>
+      <body>
+        <a href="#main-content" className="skip-link">
+          跳到主要内容
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

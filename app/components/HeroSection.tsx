@@ -1,173 +1,118 @@
-"use client";
+import { Check } from "lucide-react";
+import HeroParallaxImage from "./HeroParallaxImage";
+import { Reveal, RevealAside } from "./MotionReveal";
+import PretextHeading from "./PretextHeading";
 
-import { useState } from "react";
-import { Activity, ArrowDown, ArrowUpRight, Braces, Users } from "lucide-react";
-
-const practices = [
-  {
-    id: "signals",
-    index: "01",
-    short: "Signals",
-    name: "看见变化",
-    label: "Frontier Signals",
-    description:
-      "追踪改变工作与组织的信号，给出可证伪、可继续追问的判断。",
-    note: "持续观察 / 周期性发布",
-    link: "https://signals.frontierworld.ai/",
-    linkLabel: "阅读最新观察",
-    external: true,
-    icon: Activity,
-  },
-  {
-    id: "commons",
-    index: "02",
-    short: "Commons",
-    name: "共同实践",
-    label: "Frontier Commons",
-    description:
-      "围绕真实问题协作，用最小原型和真实反馈把观点推进到结果。",
-    note: "闭门共创 / 场景验证",
-    link: "#contact",
-    linkLabel: "带着问题来",
-    external: false,
-    icon: Users,
-  },
-  {
-    id: "open",
-    index: "03",
-    short: "Open",
-    name: "开放成果",
-    label: "Frontier Open",
-    description:
-      "把验证过的方法整理成报告、代码与工作流，留下可复用的起点。",
-    note: "报告 / 代码 / Playbooks",
-    link: "#method",
-    linkLabel: "查看工作方法",
-    external: false,
-    icon: Braces,
-  },
-] as const;
+const deliverables = [
+  "选题判断卡",
+  "事实与主张台账",
+  "可继续编辑或发布的样稿",
+  "供下一次复用、30 天后复查的工作流",
+  "一个 30 天验证指标",
+];
 
 export default function HeroSection() {
-  const [activePractice, setActivePractice] = useState(0);
-  const current = practices[activePractice];
-  const ActiveIcon = current.icon;
-
   return (
-    <section className="relative min-h-[92dvh] overflow-hidden border-b border-white/10 bg-[#050608]">
-      <img
-        src="/frontier-passage.jpg"
-        alt=""
-        aria-hidden="true"
-        fetchPriority="high"
-        loading="eager"
-        decoding="async"
-        className="absolute inset-0 h-full w-full object-cover object-[66%_center] opacity-95 sm:object-center"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,5,8,0.98)_0%,rgba(3,5,8,0.78)_38%,rgba(3,5,8,0.2)_72%,rgba(3,5,8,0.38)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,5,8,0.26)_0%,rgba(3,5,8,0.02)_50%,rgba(3,5,8,0.9)_100%)]" />
+    <section className="theme-light-region theme-hero relative min-h-[92dvh] overflow-hidden border-b border-white/10 bg-[#050608]">
+      <HeroParallaxImage />
+      <div className="theme-hero-overlay-horizontal absolute inset-0 bg-[linear-gradient(90deg,rgba(3,5,8,0.99)_0%,rgba(3,5,8,0.92)_43%,rgba(3,5,8,0.34)_75%,rgba(3,5,8,0.54)_100%)]" />
+      <div className="theme-hero-overlay-vertical absolute inset-0 bg-[linear-gradient(180deg,rgba(3,5,8,0.4)_0%,rgba(3,5,8,0.06)_48%,rgba(3,5,8,0.94)_100%)]" />
 
-      <div className="relative mx-auto flex min-h-[92dvh] max-w-7xl items-center px-5 pb-24 pt-24 sm:px-8 sm:pt-32">
-        <div className="grid w-full items-center gap-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(22rem,0.72fr)] lg:gap-16">
-          <div className="hero-copy max-w-3xl">
-            <div className="mb-5 flex items-center gap-3 text-xs font-medium text-white/58">
+      <div className="relative mx-auto flex min-h-[92dvh] max-w-7xl items-center px-5 pb-20 pt-24 sm:px-8 sm:pb-28 sm:pt-32">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(21rem,0.68fr)] lg:gap-16">
+          <Reveal className="max-w-4xl">
+            <div className="mb-4 flex items-center gap-3 text-xs font-medium text-white/62 sm:mb-6">
               <span className="h-px w-8 bg-[#9be7c8]" />
-              <span>Independent AI practice network</span>
+              <span>Frontier Commons · 创始班适配度申请</span>
             </div>
-            <h1 className="text-balance font-semibold leading-[0.96] text-white">
-              <span className="block text-[clamp(3.15rem,8vw,6.6rem)]">Frontier World</span>
-              <span className="mt-4 block text-2xl font-medium text-white/78 sm:text-3xl">
-                前沿之境
-              </span>
-            </h1>
-            <p className="mt-7 max-w-xl text-pretty text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-              观察 AI 时代正在发生的变化，让可信的人围绕真实问题共同实践，再把验证过的方法开放出来。
+
+            <PretextHeading
+              as="h1"
+              text="把一条 AI 选题，做成可信、可发布的成果。"
+              minScale={0.62}
+              keepTogether={["选题", "可发布"]}
+              className="max-w-4xl text-[clamp(2.35rem,6.5vw,5.8rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-white"
+            />
+
+            <p className="mt-5 max-w-2xl text-pretty text-base leading-8 text-white/72 sm:mt-7 sm:text-lg">
+              面向每周交付 AI / 科技内容的独立创作者与 2–10 人小团队。
+              带真实选题和截止时间来，完成判断、核验、样稿，并留下供下一次复用的流程。
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+
+            <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center">
               <a
-                href="https://signals.frontierworld.ai/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-4 text-sm font-semibold text-black transition-[background,transform] duration-200 hover:bg-[#dfe9fb] active:scale-[0.97]"
+                href="#apply"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-black transition-[background,transform] duration-200 hover:bg-[#dfe9fb] active:scale-[0.97]"
               >
-                <span>读 Frontier Signals</span>
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <span>申请创始席位</span>
               </a>
               <a
-                href="#actions"
-                className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/18 bg-black/18 px-4 text-sm font-medium text-white/82 backdrop-blur-md transition-[background,border-color,transform] duration-200 hover:border-white/30 hover:bg-white/[0.08] active:scale-[0.97]"
+                href="#proof"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/18 bg-black/18 px-5 text-sm font-medium text-white/84 backdrop-blur-md transition-[background,border-color,transform] duration-200 hover:border-white/32 hover:bg-white/[0.08] active:scale-[0.97]"
               >
-                <span>查看实践</span>
-                <ArrowDown className="h-4 w-4" />
+                <span>先看公开证据</span>
               </a>
             </div>
-          </div>
 
-          <div className="hero-stage material-panel relative overflow-hidden rounded-lg p-2">
-            <div
-              className="grid grid-cols-3 gap-1 rounded-md bg-black/28 p-1"
-              aria-label="Frontier World 三种实践形态"
-            >
-              {practices.map((practice, index) => (
-                <button
-                  key={practice.id}
-                  type="button"
-                  onClick={() => setActivePractice(index)}
-                  aria-pressed={activePractice === index}
-                  className={
-                    "min-h-9 rounded-md px-2 text-xs font-medium transition-[background,color,transform] duration-200 active:scale-[0.96] " +
-                    (activePractice === index
-                      ? "bg-white text-black"
-                      : "text-white/52 hover:bg-white/[0.07] hover:text-white")
-                  }
-                >
-                  {practice.short}
-                </button>
-              ))}
-            </div>
+            <p className="mt-4 text-xs leading-6 text-white/50">
+              申请不等于占位。日期与城市确认后再完成付费，以实际通知为准。
+            </p>
+          </Reveal>
 
-            <div
-              key={current.id}
-              className="practice-copy relative flex min-h-[11.75rem] flex-col justify-between px-4 pb-4 pt-4 sm:min-h-[13.75rem] sm:px-5 sm:pt-5"
-            >
-              <img
-                src="/passage-mark-white.svg"
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-8 bottom-3 h-36 w-36 opacity-[0.055]"
-              />
-              <div className="relative">
-                <div className="mb-3 flex items-center justify-between text-xs text-white/45 sm:mb-5">
-                  <span>{current.index} / {current.label}</span>
-                  <ActiveIcon className="h-4 w-4 text-[#9be7c8]" />
+          <RevealAside
+            className="material-panel relative overflow-hidden rounded-xl p-2"
+            delay={0.12}
+            ariaLabel="Frontier Commons 创始班交付概览"
+          >
+            <div className="rounded-lg bg-black/32 p-5 sm:p-6">
+              <div className="flex items-start justify-between gap-4 border-b border-white/12 pb-5">
+                <div>
+                  <div className="text-xs text-[#9be7c8]">你带来</div>
+                  <p className="mt-2 text-base font-medium text-white">
+                    一个真实选题 + 明确截止时间
+                  </p>
                 </div>
-                <h2 className="text-2xl font-semibold text-white">{current.name}</h2>
-                <p className="mt-3 max-w-sm text-sm leading-6 text-white/62">
-                  {current.description}
-                </p>
+                <span className="shrink-0 rounded-md border border-[#9be7c8]/30 bg-[#9be7c8]/10 px-2.5 py-1 text-[11px] font-medium text-[#bcefdc]">
+                  首轮验证
+                </span>
               </div>
-              <div className="relative mt-4 flex items-end justify-end gap-4 border-t border-white/12 pt-4 sm:mt-6 sm:justify-between">
-                <span className="hidden text-xs text-white/42 sm:inline">{current.note}</span>
-                <a
-                  href={current.link}
-                  target={current.external ? "_blank" : undefined}
-                  rel={current.external ? "noopener noreferrer" : undefined}
-                  className="group flex shrink-0 items-center gap-1.5 rounded-md text-xs font-semibold text-[#b8d0ff] transition-colors hover:text-white"
-                >
-                  <span>{current.linkLabel}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
+
+              <div className="pt-5">
+                <div className="text-xs text-white/50">你带走</div>
+                <ul className="mt-4 grid gap-3">
+                  {deliverables.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm leading-6 text-white/74">
+                      <Check className="mt-1 h-4 w-4 shrink-0 text-[#9be7c8]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-6 grid grid-cols-3 gap-2 border-t border-white/12 pt-5 text-center">
+                <div>
+                  <div className="text-base font-semibold tabular-nums text-white">3–4h</div>
+                  <div className="mt-1 text-[11px] text-white/50">线下共创</div>
+                </div>
+                <div className="border-x border-white/10">
+                  <div className="text-base font-semibold tabular-nums text-white">8–12</div>
+                  <div className="mt-1 text-[11px] text-white/50">人 / 场</div>
+                </div>
+                <div>
+                  <div className="text-base font-semibold tabular-nums text-white">¥699</div>
+                  <div className="mt-1 text-[11px] text-white/50">创始价 / 人</div>
+                </div>
               </div>
             </div>
-          </div>
+          </RevealAside>
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/12 backdrop-blur-sm">
-        <div className="mx-auto hidden h-16 max-w-7xl grid-cols-3 items-center px-8 text-xs text-white/42 sm:grid">
-          <span>01 / 观察变化</span>
-          <span className="text-center">02 / 共同实践</span>
-          <span className="text-right">03 / 开放成果</span>
+      <div className="theme-hero-footer absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/14 backdrop-blur-sm">
+        <div className="mx-auto hidden h-14 max-w-7xl grid-cols-3 items-center px-8 text-xs text-white/50 sm:grid">
+          <span>For / 独立创作者</span>
+          <span className="text-center">For / 2–10 人内容团队</span>
+          <span className="text-right">Outcome / 可检查成果</span>
         </div>
       </div>
     </section>
