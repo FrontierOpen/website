@@ -13,6 +13,11 @@
   --signal: #9be7c8;
   --scroll-thumb: #2c3139;
   --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+  --chrome-glass-border: rgba(255, 255, 255, 0.12);
+  --chrome-glass-solid: rgba(8, 10, 14, 0.94);
+  --chrome-glass-surface: rgba(8, 10, 14, 0.64);
+  --chrome-glass-filter: blur(18px) saturate(125%);
+  --chrome-glass-shadow: none;
 }
 
 html[data-theme="light"] {
@@ -25,6 +30,12 @@ html[data-theme="light"] {
   --accent-soft: #315f9f;
   --signal: #1f6b50;
   --scroll-thumb: #aaa9a2;
+  --chrome-glass-border: rgba(17, 21, 27, 0.13);
+  --chrome-glass-solid: rgba(255, 255, 255, 0.96);
+  --chrome-glass-surface: rgba(255, 255, 255, 0.68);
+  --chrome-glass-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 18px 44px rgba(49, 54, 61, 0.12);
   color-scheme: light;
 }
 
@@ -149,9 +160,10 @@ section[id] {
   z-index: -1;
   pointer-events: none;
   visibility: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--chrome-glass-border);
   border-radius: inherit;
-  background: rgba(8, 10, 14, 0.94);
+  background: var(--chrome-glass-solid);
+  box-shadow: var(--chrome-glass-shadow);
   opacity: 0;
   transition:
     opacity 400ms ease-in-out,
@@ -181,13 +193,13 @@ section[id] {
   }
 
   .site-header-bar::before {
-    background: rgba(8, 10, 14, 0.64);
+    background: var(--chrome-glass-surface);
   }
 
   [data-site-header].is-scrolled .site-header-bar,
   [data-site-header].is-menu-open .site-header-bar {
-    -webkit-backdrop-filter: blur(18px) saturate(125%);
-    backdrop-filter: blur(18px) saturate(125%);
+    -webkit-backdrop-filter: var(--chrome-glass-filter);
+    backdrop-filter: var(--chrome-glass-filter);
   }
 }
 
@@ -246,12 +258,10 @@ section[id] {
 
 .theme-mode-menu {
   color: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid var(--chrome-glass-border);
   border-radius: 1.25rem;
-  background: rgba(8, 10, 14, 0.92);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 24px 56px -28px rgba(0, 0, 0, 0.78);
+  background: var(--chrome-glass-solid);
+  box-shadow: var(--chrome-glass-shadow);
   transform-origin: top right;
 }
 
@@ -268,9 +278,9 @@ section[id] {
 
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .theme-mode-menu {
-    background: rgba(8, 10, 14, 0.78);
-    -webkit-backdrop-filter: blur(32px) saturate(140%);
-    backdrop-filter: blur(32px) saturate(140%);
+    background: var(--chrome-glass-surface);
+    -webkit-backdrop-filter: var(--chrome-glass-filter);
+    backdrop-filter: var(--chrome-glass-filter);
   }
 }
 
@@ -532,11 +542,6 @@ html[data-theme="light"] .theme-control:hover {
 
 html[data-theme="light"] .theme-mode-menu {
   color: rgba(17, 21, 27, 0.78);
-  border-color: rgba(17, 21, 27, 0.15);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.88),
-    0 24px 56px -28px rgba(49, 54, 61, 0.42);
 }
 
 html[data-theme="light"] .theme-mode-option[aria-checked="true"] {
@@ -548,12 +553,6 @@ html[data-theme="light"] .theme-mode-option:not([aria-checked="true"]):hover,
 html[data-theme="light"] .theme-mode-option:not([aria-checked="true"]):focus-visible {
   color: #11151b;
   background: rgba(17, 21, 27, 0.06);
-}
-
-@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  html[data-theme="light"] .theme-mode-menu {
-    background: rgba(255, 255, 255, 0.84);
-  }
 }
 
 html[data-theme="light"] [data-site-header].is-scrolled .theme-control,
@@ -580,20 +579,6 @@ html[data-theme="light"] [data-site-header] nav a:hover,
 html[data-theme="light"] [data-site-header] .header-cta:hover {
   color: #11151b;
   background: rgba(17, 21, 27, 0.075);
-}
-
-html[data-theme="light"] [data-site-header] .site-header-bar::before {
-  border-color: rgba(17, 21, 27, 0.13);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.82),
-    0 18px 44px rgba(49, 54, 61, 0.12);
-}
-
-@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  html[data-theme="light"] [data-site-header] .site-header-bar::before {
-    background: rgba(255, 255, 255, 0.68);
-  }
 }
 
 html[data-theme="light"] [data-site-header].is-scrolled .header-cta,
