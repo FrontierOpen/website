@@ -227,7 +227,7 @@ export default function ThemeToggle() {
           role="menu"
           aria-label="主题选择"
           onKeyDown={handleMenuKeyDown}
-          className="theme-mode-menu absolute right-0 top-[calc(100%+0.5rem)] z-20 w-44 p-1.5"
+          className="theme-mode-menu absolute right-0 top-[calc(100%+0.5rem)] z-20 flex w-44 flex-col gap-1 p-1.5"
           initial={
             shouldReduceMotion ? false : { opacity: 0, y: -6, scale: 0.98 }
           }
