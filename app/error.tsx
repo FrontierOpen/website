@@ -13,7 +13,7 @@ export default function ErrorPage({ reset }: { reset: () => void }) {
         <div className="text-xs font-medium text-[#9be7c8]">Something went wrong</div>
         <PretextHeading
           as="h1"
-          text="这一页暂时没有正常打开。"
+          text="这一页暂时没有正常打开"
           className="mt-5 text-4xl font-semibold tracking-[-0.03em] sm:text-6xl"
         />
         <p className="mt-6 text-base leading-8 text-white/66">

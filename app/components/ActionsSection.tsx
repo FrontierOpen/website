@@ -42,7 +42,7 @@ export default function ActionsSection() {
         <Reveal className="max-w-5xl">
           <div className="text-xs font-medium text-[#9be7c8]">03 / Frontier Commons 01</div>
           <PretextHeading
-            text="带着一个真实选题来。带着五件能检查的东西走。"
+            text="带着一个真实选题来，带着五件能检查的东西走"
             keepTogether={["真实选题", "五件", "能检查", "东西走"]}
             className="mt-7 text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl"
           />

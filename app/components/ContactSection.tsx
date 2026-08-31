@@ -147,7 +147,7 @@ export default function ContactSection() {
             04 / Apply
           </div>
           <PretextHeading
-            text="把你这次必须交付的东西，说具体。"
+            text="把你这次必须交付的东西说具体"
             keepTogether={["必须交付", "说具体"]}
             className="mt-7 text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl"
           />

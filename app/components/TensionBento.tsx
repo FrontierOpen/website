@@ -31,7 +31,7 @@ export default function TensionBento() {
             01 / Who it is for
           </div>
           <PretextHeading
-            text="你不缺更多 AI 课。你缺的是把这次交付做稳。"
+            text="你不缺更多 AI 课，缺的是把这次交付做稳"
             keepTogether={["这次交付"]}
             className="mt-7 text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl"
           />

@@ -28,7 +28,7 @@ export default function HeroSection() {
 
             <PretextHeading
               as="h1"
-              text="把一条 AI 选题，做成可信、可发布的成果。"
+              text="把一条 AI 选题，做成可信、可发布的成果"
               minScale={0.62}
               keepTogether={["选题", "可发布"]}
               className="max-w-4xl text-[clamp(2.35rem,6.5vw,5.8rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-white"

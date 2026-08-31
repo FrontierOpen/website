@@ -17,7 +17,7 @@ export default function NotFound() {
           <div className="text-xs font-medium text-[#9be7c8]">404 / Not found</div>
           <PretextHeading
             as="h1"
-            text="这里还不是入口。"
+            text="这里还不是入口"
             className="mt-5 text-5xl font-semibold leading-[1.04] tracking-[-0.04em] sm:text-7xl"
           />
           <p className="mt-6 max-w-xl text-base leading-8 text-white/66">

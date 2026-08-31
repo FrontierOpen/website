@@ -50,7 +50,7 @@ export default function EvidenceSection() {
             02 / Proof
           </div>
           <PretextHeading
-            text="先看已经做成的。再看仍在验证的。"
+            text="先看已经做成的，再看仍在验证的"
             keepTogether={["已经做成", "仍在验证"]}
             className="mt-7 text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl"
           />
