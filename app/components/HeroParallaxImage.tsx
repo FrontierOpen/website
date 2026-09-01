@@ -10,26 +10,24 @@ export default function HeroParallaxImage() {
     target: targetRef,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 28]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   return (
     <div ref={targetRef} aria-hidden="true" className="absolute inset-0">
-      <picture>
-        <source media="(max-width: 767px)" srcSet="/frontier-passage-960.jpg" />
-        <motion.img
-          src="/frontier-passage.jpg"
-          alt=""
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-          style={{
-            y: shouldReduceMotion ? 0 : y,
-            scale: shouldReduceMotion ? 1 : 1.035,
-            willChange: shouldReduceMotion ? "auto" : "transform",
-          }}
-          className="theme-hero-image absolute inset-0 h-full w-full object-cover object-[69%_center] opacity-95 sm:object-center"
-        />
-      </picture>
+      <motion.img
+        src="/frontier-passage.jpg"
+        alt=""
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+        style={{
+          y: shouldReduceMotion ? 0 : y,
+          scale: shouldReduceMotion ? 1 : scale,
+          willChange: shouldReduceMotion ? "auto" : "transform",
+        }}
+        className="theme-hero-image absolute inset-0 h-full w-full object-cover"
+      />
     </div>
   );
 }

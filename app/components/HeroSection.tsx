@@ -15,8 +15,8 @@ export default function HeroSection() {
   return (
     <section className="theme-light-region theme-hero relative min-h-[92dvh] overflow-hidden border-b border-white/10 bg-[#050608]">
       <HeroParallaxImage />
-      <div className="theme-hero-overlay-horizontal absolute inset-0 bg-[linear-gradient(90deg,rgba(3,5,8,0.99)_0%,rgba(3,5,8,0.92)_43%,rgba(3,5,8,0.34)_75%,rgba(3,5,8,0.54)_100%)]" />
-      <div className="theme-hero-overlay-vertical absolute inset-0 bg-[linear-gradient(180deg,rgba(3,5,8,0.4)_0%,rgba(3,5,8,0.06)_48%,rgba(3,5,8,0.94)_100%)]" />
+      <div className="theme-hero-overlay-horizontal absolute inset-0 bg-[linear-gradient(90deg,rgba(3,5,8,0.98)_0%,rgba(3,5,8,0.78)_38%,rgba(3,5,8,0.2)_72%,rgba(3,5,8,0.38)_100%)]" />
+      <div className="theme-hero-overlay-vertical absolute inset-0 bg-[linear-gradient(180deg,rgba(3,5,8,0.26)_0%,rgba(3,5,8,0.02)_50%,rgba(3,5,8,0.9)_100%)]" />
 
       <div className="relative mx-auto flex min-h-[92dvh] max-w-7xl items-center px-5 pb-20 pt-24 sm:px-8 sm:pb-28 sm:pt-32">
         <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(21rem,0.68fr)] lg:gap-16">
