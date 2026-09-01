@@ -67,13 +67,6 @@ a {
   text-decoration: none;
 }
 
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
 button {
   touch-action: manipulation;
 }
@@ -205,7 +198,7 @@ section[id] {
 
 .header-cta {
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 0;
   background: rgba(255, 255, 255, 0.07);
   touch-action: manipulation;
   transition:
@@ -216,7 +209,6 @@ section[id] {
 }
 
 .header-cta:hover {
-  border-color: rgba(255, 255, 255, 0.28);
   background: rgba(255, 255, 255, 0.12);
 }
 
@@ -227,7 +219,6 @@ section[id] {
 [data-site-header].is-scrolled .header-cta,
 [data-site-header].is-menu-open .header-cta {
   color: rgba(255, 255, 255, 0.84);
-  border-color: transparent;
   background: transparent;
 }
 
@@ -528,7 +519,6 @@ html[data-theme="light"] [data-site-header] [class~="text-white/58"] {
 
 html[data-theme="light"] [data-site-header] .header-cta {
   color: #11151b;
-  border-color: rgba(17, 21, 27, 0.14);
   background: rgba(17, 21, 27, 0.045);
 }
 
@@ -584,7 +574,6 @@ html[data-theme="light"] [data-site-header] .header-cta:hover {
 html[data-theme="light"] [data-site-header].is-scrolled .header-cta,
 html[data-theme="light"] [data-site-header].is-menu-open .header-cta {
   color: rgba(17, 21, 27, 0.78);
-  border-color: transparent;
   background: transparent;
 }
 

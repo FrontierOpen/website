@@ -264,7 +264,7 @@ export default function ThemeToggle() {
         aria-controls="theme-mode-menu"
         title={`主题：${activeOption.label}`}
         suppressHydrationWarning
-        className="theme-control inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border-0 bg-transparent px-3 text-xs font-medium text-white transition-[background,color,transform] duration-200 hover:bg-white/[0.12] active:scale-[0.96]"
+        className="theme-control inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border-0 bg-transparent px-3 text-[13px] font-medium text-white transition-[background,color,transform] duration-200 hover:bg-white/[0.12] active:scale-[0.96]"
       >
         <ActiveIcon aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />
         <span className="hidden xl:inline">主题</span>
