@@ -119,7 +119,7 @@ export default function SiteHeader() {
             ref={menuButtonRef}
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="header-menu-button flex h-10 w-10 items-center justify-center rounded-full border-0 bg-transparent text-white transition-[background,transform] duration-200 hover:bg-white/[0.1] active:scale-[0.94] lg:hidden"
+            className="header-menu-button flex h-10 w-10 items-center justify-center rounded-full border-0 bg-transparent text-white transition-colors duration-200 lg:hidden"
             aria-label={mobileMenuOpen ? "关闭菜单" : "打开菜单"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
