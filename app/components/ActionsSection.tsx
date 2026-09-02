@@ -1,109 +1,117 @@
-import { Activity, ArrowUpRight, Braces, Users } from "lucide-react";
+import { ClipboardCheck, FileCheck2, FileText, Gauge, Workflow } from "lucide-react";
+import { Reveal, RevealArticle } from "./MotionReveal";
+import PretextHeading from "./PretextHeading";
 
-const actions = [
+const deliverables = [
   {
     index: "01",
-    name: "Frontier Signals",
-    title: "看见变化",
-    description:
-      "持续观察 AI、大模型与 Agent 如何重写工作和组织。我们不追求抢先表态，而是给出可以验证、也允许被推翻的判断。",
-    evidence: "深度观察 / 趋势拆解 / 现场笔记",
-    status: "持续发布",
-    href: "https://signals.frontierworld.ai/",
-    external: true,
-    icon: Activity,
+    title: "选题判断卡",
+    description: "先回答这条变化和谁有关、为什么现在值得做，以及什么条件下应该停手。",
+    icon: ClipboardCheck,
   },
   {
     index: "02",
-    name: "Frontier Commons",
-    title: "共同实践",
-    description:
-      "围绕真实业务问题组织小规模协作。从一句问题开始，用原型、代码和真实反馈把讨论推进到可以检验的结果。",
-    evidence: "闭门圆桌 / 原型共创 / 场景验证",
-    status: "议题制开放",
-    href: "#contact",
-    external: false,
-    icon: Users,
+    title: "事实与主张台账",
+    description: "把一手来源、可确认事实、编辑判断和不确定性边界分开，避免顺滑但无法核对。",
+    icon: FileCheck2,
   },
   {
     index: "03",
-    name: "Frontier Open",
-    title: "开放成果",
-    description:
-      "把被验证的方法整理成报告、代码与工作流。不是把答案封装起来，而是把下一个人可以继续前进的起点留下来。",
-    evidence: "Open source / Reports / Playbooks",
-    status: "持续沉淀",
-    href: "#method",
-    external: false,
-    icon: Braces,
+    title: "可发布样稿",
+    description: "完成一份可以继续编辑或发布的真实成果，不拿课堂练习代替你的截止时间。",
+    icon: FileText,
   },
-] as const;
+  {
+    index: "04",
+    title: "复用工作流",
+    description: "把本次方法整理成供下一次复用、并在 30 天后复查的步骤、模板与验收条件。",
+    icon: Workflow,
+  },
+  {
+    index: "05",
+    title: "30 天验证指标",
+    description: "记录耗时、重大返工、事实错误或复用情况，用后续结果判断方法是否真的成立。",
+    icon: Gauge,
+  },
+];
 
 export default function ActionsSection() {
   return (
-    <section
-      id="actions"
-      className="border-b border-white/10 bg-[#080a0d] py-24 md:py-36"
-    >
+    <section id="commons" className="theme-section-base border-b border-white/10 bg-[#050608] py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="text-xs font-medium text-[#9be7c8] lg:col-span-2">
-            02 / What we do
-          </div>
-          <h2 className="text-balance text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:col-span-6 lg:text-6xl">
-            三个动作，
-            <br />
-            构成一条进化之路。
-          </h2>
-          <p className="max-w-md text-sm leading-7 text-white/54 lg:col-span-4">
-            观察不是终点，连接也不是终点。每一次工作，都要继续走向实践和开放。
+        <Reveal className="max-w-5xl">
+          <div className="text-xs font-medium text-[#9be7c8]">03 / Frontier Commons 01</div>
+          <PretextHeading
+            text="带着一个真实选题来，带着五件能检查的东西走"
+            keepTogether={["真实选题", "五件", "能检查", "东西走"]}
+            className="mt-7 text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl"
+          />
+          <p className="mt-6 max-w-2xl text-base leading-8 text-white/62">
+            第一场只验证一件事：能否在一次共创里，把“我想写这个”推进成可信成果，
+            并留下一套供后续复用、30 天后可复查的流程。
           </p>
+        </Reveal>
+
+        <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4" delay={0.06} distance={16}>
+            <dl className="grid grid-cols-2 gap-x-5 gap-y-6 border-t border-white/12 pt-7 text-sm">
+              <div>
+                <dt className="text-white/52">形式</dt>
+                <dd className="mt-1.5 font-medium text-white">线下 3–4 小时</dd>
+              </div>
+              <div>
+                <dt className="text-white/52">人数</dt>
+                <dd className="mt-1.5 font-medium text-white">8 人开班 / 12 人封顶</dd>
+              </div>
+              <div>
+                <dt className="text-white/52">创始价</dt>
+                <dd className="mt-1.5 font-medium text-white">¥699 / 人</dd>
+              </div>
+              <div>
+                <dt className="text-white/52">当前状态</dt>
+                <dd className="mt-1.5 font-medium text-[#bcefdc]">收集适配度申请</dd>
+              </div>
+            </dl>
+
+            <a
+              href="#apply"
+              className="group mt-9 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-black transition-[background,transform] hover:bg-[#dfe9fb] active:scale-[0.97]"
+            >
+              <span>申请创始席位</span>
+            </a>
+          </Reveal>
+
+          <div className="border-t border-white/14 lg:col-span-8">
+            {deliverables.map((item) => {
+              const Icon = item.icon;
+              return (
+                <RevealArticle
+                  key={item.index}
+                  delay={Number(item.index) * 0.055}
+                  className="group grid gap-5 border-b border-white/12 py-7 sm:grid-cols-[4rem_1fr] sm:py-8"
+                >
+                  <div className="flex items-center justify-between sm:block">
+                    <span className="text-xs font-medium text-white/56">{item.index}</span>
+                    <span className="mt-4 hidden h-10 w-10 items-center justify-center rounded-md border border-white/12 text-white/56 transition-colors group-hover:border-[#76a7ff]/45 group-hover:text-[#b8d0ff] sm:flex">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                  </div>
+                  <div className="grid gap-3 md:grid-cols-[minmax(12rem,0.66fr)_1fr] md:items-start md:gap-8">
+                    <h3 className="text-2xl font-medium text-white">{item.title}</h3>
+                    <p className="max-w-xl text-base leading-7 text-white/60">{item.description}</p>
+                  </div>
+                </RevealArticle>
+              );
+            })}
+          </div>
         </div>
 
-        <div className="mt-16 border-t border-white/14 md:mt-24">
-          {actions.map((action) => {
-            const Icon = action.icon;
-            return (
-              <a
-                key={action.index}
-                href={action.href}
-                target={action.external ? "_blank" : undefined}
-                rel={action.external ? "noopener noreferrer" : undefined}
-                className="group grid min-h-[15rem] gap-6 border-b border-white/12 py-8 transition-[background,transform] duration-300 hover:bg-white/[0.035] active:scale-[0.995] md:grid-cols-12 md:items-center md:px-4"
-              >
-                <div className="flex items-center gap-4 md:col-span-2">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-md border border-white/14 text-[#b8d0ff] transition-colors duration-300 group-hover:border-white/28 group-hover:bg-white/[0.06]">
-                    <Icon className="h-4.5 w-4.5" />
-                  </span>
-                  <span className="text-xs text-white/42">{action.index}</span>
-                </div>
-
-                <div className="md:col-span-4">
-                  <div className="text-xs text-white/42">{action.name}</div>
-                  <h3 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-                    {action.title}
-                  </h3>
-                </div>
-
-                <p className="max-w-xl text-sm leading-7 text-white/56 md:col-span-4">
-                  {action.description}
-                </p>
-
-                <div className="flex items-end justify-between gap-4 md:col-span-2 md:h-full md:flex-col md:items-end">
-                  <span className="flex items-center gap-2 text-xs text-[#9be7c8]">
-                    <span className="h-1.5 w-1.5 rounded-sm bg-[#9be7c8]" />
-                    {action.status}
-                  </span>
-                  <ArrowUpRight className="h-5 w-5 text-white/42 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" />
-                </div>
-
-                <div className="text-xs text-white/38 md:col-start-7 md:col-span-4">
-                  {action.evidence}
-                </div>
-              </a>
-            );
-          })}
-        </div>
+        <Reveal className="mt-8 max-w-3xl" delay={0.1} distance={12}>
+          <p className="text-sm leading-7 text-white/56">
+            不承诺涨粉，不承诺拿投资，不讲泛 AI 名词，也不提供无限期 1v1。
+            日期与城市会根据首批适配申请确认，申请本身不锁定席位。
+          </p>
+        </Reveal>
       </div>
     </section>
   );
