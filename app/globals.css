@@ -588,6 +588,10 @@ html[data-theme="light"] [data-site-header].is-menu-open .theme-control:hover {
   background: rgba(17, 21, 27, 0.075);
 }
 
+[data-site-header] .site-header-bar > .site-brand-link:hover {
+  background: transparent !important;
+}
+
 html[data-theme="light"] [data-site-header] .header-menu-button {
   color: #11151b;
   background: transparent;

@@ -83,7 +83,7 @@ export default function SiteHeader() {
         <a
           href="#top"
           aria-label="Frontier World 首页"
-          className="group flex min-h-10 min-w-0 items-center gap-3 rounded-full px-2.5 py-1 max-[399px]:gap-2 max-[399px]:px-1.5 sm:px-3"
+          className="site-brand-link group flex min-h-10 min-w-0 items-center gap-3 rounded-full px-2.5 py-1 max-[399px]:gap-2 max-[399px]:px-1.5 sm:px-3"
         >
           <BrandMark className="h-8 w-8 transition-transform duration-300 group-hover:scale-105" />
           <span className="truncate text-sm font-semibold text-white max-[399px]:text-[13px]">Frontier World</span>
