@@ -167,7 +167,7 @@ section[id] {
 [data-site-header].is-menu-open .site-header-bar {
   max-width: 61.25rem;
   padding-right: 0.375rem;
-  padding-left: 1rem;
+  padding-left: 0.375rem;
 }
 
 [data-site-header].is-scrolled .site-header-bar::before,
