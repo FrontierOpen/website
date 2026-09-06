@@ -1,50 +1,21 @@
-import type { Metadata } from "next";
-import { Mail } from "lucide-react";
-import BrandMark from "../components/BrandMark";
-import PretextHeading from "../components/PretextHeading";
-import SiteFooter from "../components/SiteFooter";
-import ThemeToggle from "../components/ThemeToggle";
-
+import type { Metadata } from 'next';
+import SiteHeader from '../site-header';
+import { Footer } from '../site';
 export const metadata: Metadata = {
-  title: "隐私说明",
-  description: "Frontier World 网站如何处理访问与创始班申请信息。",
-  alternates: {
-    canonical: "/privacy",
-  },
-  openGraph: {
-    title: "隐私说明 | Frontier World",
-    description: "Frontier World 网站如何处理访问与创始班申请信息。",
-    type: "website",
-    locale: "zh_CN",
-    url: "https://frontierworld.ai/privacy",
-    siteName: "Frontier World",
-    images: [
-      {
-        url: "/frontier-passage.jpg",
-        width: 1920,
-        height: 1080,
-        alt: "Frontier World 前沿之境的深色空间视觉",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "隐私说明 | Frontier World",
-    description: "Frontier World 网站如何处理访问与创始班申请信息。",
-    images: ["/frontier-passage.jpg"],
-  },
+  title: '隐私说明 · Frontier World',
+  description: 'Frontier World 的邮件联系、基础访问记录与外部链接说明。',
+  alternates: { canonical: '/privacy' },
 };
-
 const sections = [
   {
-    title: "申请表里的内容",
+    title: "邮件链接",
     body:
-      "首页申请表只在你的浏览器里整理邮件正文。点击提交后，网站会打开本机邮件客户端；在你亲自发送前，这些内容不会通过本站上传或保存。",
+      "点击本站的邮件链接会打开本机邮件客户端；在你亲自发送前，邮件内容不会通过本站上传或保存。",
   },
   {
     title: "你主动发送的邮件",
     body:
-      "发送到 contact@frontierworld.ai 的姓名、邮箱、任务背景与其他内容，只用于判断申请是否适配、回复沟通和安排后续。请不要发送账号密码、身份证号或未脱敏客户数据。",
+      "发送到 contact@frontierworld.ai 的姓名、邮箱、任务背景与其他内容，只用于回复沟通和安排后续。请不要发送账号密码、身份证号或未脱敏客户数据。",
   },
   {
     title: "基础访问记录",
@@ -65,56 +36,21 @@ const sections = [
 
 export default function PrivacyPage() {
   return (
-    <div className="theme-light-region theme-page min-h-[100dvh] bg-[#050608] text-white">
-      <header className="border-b border-white/10">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
-          <a href="/" className="flex min-h-11 items-center gap-3 rounded-full">
-            <BrandMark className="h-8 w-8" />
-            <span className="text-sm font-semibold">Frontier World</span>
-          </a>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <a
-              href="/"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm text-white/70 transition-colors hover:bg-white/[0.07] hover:text-white"
-            >
-              返回首页
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <main id="main-content" className="mx-auto max-w-3xl px-5 py-16 sm:px-8 md:py-24">
-        <div className="text-xs font-medium text-[#9be7c8]">Privacy / 2026.08.31</div>
-        <PretextHeading
-          as="h1"
-          text="隐私说明"
-          className="mt-5 text-4xl font-semibold tracking-[-0.03em] text-white sm:text-6xl"
-        />
-        <p className="mt-6 max-w-2xl text-base leading-8 text-white/66">
-          这份说明只写当前网站实际发生的事情。现在的申请动作依赖你的邮件客户端，
-          本站本身不接收、存储或分析表单内容。
-        </p>
-
-        <div className="mt-12 border-t border-white/14">
+    <>
+      <SiteHeader lang="zh" path="" />
+      <main id="main" className="container section utility-page">
+        <h1>隐私说明</h1>
+        <div className="privacy-sections">
           {sections.map((section) => (
-            <section key={section.title} className="border-b border-white/12 py-7">
-              <h2 className="text-xl font-semibold text-white">{section.title}</h2>
-              <p className="mt-3 text-base leading-8 text-white/62">{section.body}</p>
+            <section key={section.title}>
+              <h2>{section.title}</h2>
+              <p>{section.body}</p>
             </section>
           ))}
         </div>
-
-        <a
-          href="mailto:contact@frontierworld.ai"
-          className="mt-10 inline-flex min-h-12 items-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-black transition-[background,transform] hover:bg-[#dfe9fb] active:scale-[0.97]"
-        >
-          <Mail className="h-4 w-4" />
-          联系我们
-        </a>
+        <a className="text-link" href="mailto:contact@frontierworld.ai">联系我们</a>
       </main>
-
-      <SiteFooter />
-    </div>
+      <Footer lang="zh" path="" />
+    </>
   );
 }
